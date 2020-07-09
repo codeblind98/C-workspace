@@ -5,6 +5,7 @@ orange
 pink
 Unicorn
 indigo
+Today is Earth Day 
 green
 blue
 ponies are great
