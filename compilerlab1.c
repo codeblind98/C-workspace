@@ -5,7 +5,7 @@
 int main(){
     char str[50],temp[10];
     char blank[10]="          ";
-    int i,check,num,alpha,op,other;
+    int i,check,num,alpha,op,other,othercount=0,operatorcount=0,numbercount=0,identifiercount=0;
     i=0;
     printf("\nEnter a string :");
     gets(str);
@@ -30,16 +30,25 @@ int main(){
         }
     
         //Check and print the token here
-      if(other>0)
+      if(other>0){
        printf("\n%s is other",temp);
-      else if(op>0&&alpha==0&&num==0)
+       othercount++;}
+      else if(op>0&&alpha==0&&num==0){
        printf("\n%s is an operator",temp);
-      else if(num>0&&alpha==0&&op==0)
+       operatorcount++;}
+      else if(num>0&&alpha==0&&op==0){
        printf("\n%s is a number",temp);
+       numbercount++;}
       else{
-       printf("\n%s is an identifier",temp);}
+       printf("\n%s is an identifier",temp);
+       identifiercount++;}
      i++;
      
     }
+     printf("\nOther : %d",othercount);
+     printf("\nOperator : %d",operatorcount);
+     printf("\nNumber : %d",numbercount);
+     printf("\nIdentifier : %d",identifiercount);
    return 0;
 }
+
