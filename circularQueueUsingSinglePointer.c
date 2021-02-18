@@ -64,7 +64,7 @@ typedef struct node{
 		else{
 		   printf("\nMemory not allocated");
  	}
- 	return last;
+ 	return p;
  }
 
   nodetype* pop(nodetype *front){
