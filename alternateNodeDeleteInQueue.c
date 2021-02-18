@@ -7,7 +7,7 @@ typedef struct node{
  }nodetype;
 
 nodetype* insert(nodetype*);
-nodetype* alternateDel(nodetype*);
+void alternateDel(nodetype*);
 void display(nodetype*);
 
 int main(){
@@ -23,9 +23,9 @@ int main(){
               front=rear;
              break;
           case 2:
-             front = alternateDel(front);
-             if(front==NULL)
-              rear=front;
+              alternateDel(front);
+             if(front->next==NULL)
+              rear=NULL;
              break;
           case 3:
              display(front);
@@ -60,9 +60,9 @@ nodetype* insert(nodetype *rear){
   return rear;
  }
 
-nodetype* alternateDel(nodetype *front){
+void alternateDel(nodetype *front){
      int count=1;
-     nodetype *temp=NULL,*frontprev=NULL,*frontholder=front;
+     nodetype *temp=NULL,*frontprev=NULL;
      while(front!=NULL){
           if(count%2!=0){
             frontprev=front;
@@ -78,7 +78,6 @@ nodetype* alternateDel(nodetype *front){
             free(temp);
           }
      }
-     return frontholder;
  }
 
 
@@ -92,7 +91,3 @@ void display(nodetype *front){
 	else
 	printf("\nqueue is empty");
  }
-
-
-
-
