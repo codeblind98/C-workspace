@@ -7,7 +7,7 @@ typedef struct node{
  }nodetype;
 
 nodetype* insert(nodetype*);
-void alternateDel(nodetype*);
+nodetype* alternateDel(nodetype*,nodetype*);
 void display(nodetype*);
 
 int main(){
@@ -23,9 +23,7 @@ int main(){
               front=rear;
              break;
           case 2:
-              alternateDel(front);
-             if(front->next==NULL)
-              rear=NULL;
+              rear=alternateDel(front,rear);
              break;
           case 3:
              display(front);
@@ -60,7 +58,7 @@ nodetype* insert(nodetype *rear){
   return rear;
  }
 
-void alternateDel(nodetype *front){
+nodetype* alternateDel(nodetype *front,nodetype *rear){
      int count=1;
      nodetype *temp=NULL,*frontprev=NULL;
      while(front!=NULL){
@@ -78,6 +76,10 @@ void alternateDel(nodetype *front){
             free(temp);
           }
      }
+     if(count%2!=0)
+       return frontprev;
+     else
+      return rear;
  }
 
 
