@@ -25,11 +25,7 @@ typedef struct node{
 	      last = push(last);
 	      break;
 	  case 2 :
-	      if(last!=NULL)
-	        front=last->next;
-	      front= pop(front);
-          if(front!=NULL)
-	         last->next=front;
+	  	  last=pop(last);
 	      break;
 	   case 3:
 	       display(last);
@@ -67,18 +63,27 @@ typedef struct node{
  	return p;
  }
 
-  nodetype* pop(nodetype *front){
- 	nodetype *temp;
- 		if(front!=NULL){
- 			temp=front;
- 			printf("\nPopped element is %d",front->data);
-    		front=front->next;
-    		free(temp);
+  nodetype* pop(nodetype *last){
+ 	nodetype *temp=NULL;
+ 		if(last!=NULL){
+ 		      temp=last->next;
+ 		    if(temp!=last){
+ 		    	printf("\npopped element is %d",temp->data);
+ 		    	last->next=temp->next;
+ 		    	free(temp);
+ 		    	return last;
+			 }
+			 else{
+			    printf("\npopped element is %d",last->data);
+				temp=NULL;
+				free(last);
+				return temp;	
+			 }
 		}
 		else{
 		   printf("\nstack is empty");
  	}
- 	return front;
+ 	
  }
 
  void display(nodetype *last){
@@ -94,4 +99,3 @@ typedef struct node{
 		   printf("\nstack is empty");
  	}
  }
-
