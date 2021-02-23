@@ -8,7 +8,7 @@ typedef struct node{
  }nodetype;
 
  nodetype* createProcessTable(nodetype*);
-// nodetype* startProcess(nodetype*);
+ nodetype* startProcess(nodetype*);
  void display(nodetype*);
 
  int main(){
@@ -24,9 +24,9 @@ typedef struct node{
 	   case 1:
 	      last = createProcessTable(last);
 	      break;
-	 /* case 2 :
+	   case 2 :
 	  	  last = startProcess(last);
-	      break; */S
+	      break; 
 	   case 3:
 	       display(last);
 		   break;
@@ -67,28 +67,29 @@ typedef struct node{
 	return last;
  }
 
- /* nodetype* pop(nodetype *last){
- 	nodetype *temp=NULL;
- 		if(last!=NULL){
- 		      temp=last->next;
- 		    if(temp!=last){
- 		    	printf("\npopped element is %d",temp->data);
- 		    	last->next=temp->next;
- 		    	free(temp);
- 		    	return last;
-			 }
-			 else{
-			    printf("\npopped element is %d",last->data);
-				temp=NULL;
-				free(last);
-				return temp;	
-			 }
-		}
-		else{
-		   printf("\nstack is empty");
- 	}
+  nodetype* startProcess(nodetype *last){
+ 	nodetype *prev=NULL,*temp=NULL,*current=NULL;
+ 	prev=last; current=last->next;
+ 	while(1){
+ 		current->data -=10;
+ 		if(current->next==current){
+ 			printf("\nProcess%d is over",current->processNumber);
+ 			break;
+		 }
+		 if(current->data<=0){
+		 	prev->next=current->next;
+		 	printf("\nProcess%d is over",current->processNumber);
+		 	temp=current;
+		 	current=current->next;
+		 	free(temp);
+		 	temp=NULL;
+		 }
+		 prev=current;
+		 current=current->next;
+	 }
  	
- }*/
+ 	return NULL;
+ }
 
  void display(nodetype *last){
 
