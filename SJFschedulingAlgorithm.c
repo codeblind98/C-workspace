@@ -68,21 +68,24 @@ typedef struct node{
  }
 
   nodetype* startProcess(nodetype *last){
+  	int timeCount=0;
  	nodetype *prev=NULL,*temp=NULL,*current=NULL;
  	prev=last; current=last->next;
  	while(1){
  		current->data -=10;
- 		if(current->next==current){
- 			printf("\nProcess%d is over",current->processNumber);
+ 		timeCount +=10;
+ 		if(current->next==current&&current->data==NULL){
+ 			printf("\nProcess%d is over after %d seconds",current->processNumber,timeCount);
  			break;
 		 }
 		 if(current->data<=0){
 		 	prev->next=current->next;
-		 	printf("\nProcess%d is over",current->processNumber);
+		 	printf("\nProcess%d is over after %d seconds",current->processNumber,timeCount);
 		 	temp=current;
 		 	current=current->next;
 		 	free(temp);
 		 	temp=NULL;
+		 	continue;
 		 }
 		 prev=current;
 		 current=current->next;
