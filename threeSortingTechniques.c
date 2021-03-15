@@ -50,12 +50,14 @@ int main(){
  	for(i=0;i<len-1;i++){
  		min=a[i];
  		pos=i;
- 		for(j=i+1;j<len-1;j++){
+ 		for(j=i+1;j<len;j++){
  			if(a[j]<min){
  				min=a[j];
  				pos=j;
 			 }
 		 }
+		a[pos]=a[i];
+		a[i]=min;
 	 }
 	 printf("\n------printing array sorted by selection sort--------\n");
 	 display(a,len);
